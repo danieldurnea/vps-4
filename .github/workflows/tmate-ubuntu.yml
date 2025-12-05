@@ -1,30 +1,11 @@
-name: 'tmate-ubuntu'
-
-on:
-  workflow_dispatch:
-    inputs:
-      mode:
-        description: 'Choose tmate or ngrok mode'
-        required: false
-        default: 'tmate'
-
+name: CI
+on: [push]
 jobs:
-  ssh-debug:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2  # 检出你的代码仓库
-
-      - name: Choose mode tmate (ubuntu)
-        run: |
-          MODE=${{ github.event.inputs.mode }}
-          bash ./${MODE}2actions.sh  # 使用相对路径执行脚本
-        shell: bash
-        
-      - name: Sleep
-        run: sleep 6h
-
-作者：AM科技
-链接：https://juejin.cn/post/7462571241742024730
-来源：稀土掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    - uses: actions/checkout@v4
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      with:
+        detached: true
