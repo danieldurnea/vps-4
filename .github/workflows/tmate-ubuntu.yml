@@ -8,10 +8,10 @@
       - name: Choose mode ngrok (ubuntu)
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }} 
-          PASSWORD: ${{ secrets.PASSWORD }}
+          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
         run: |
           MODE=${{ github.event.inputs.mode }}
-          bash ./${MODE}linux-ssh.sh  # 使用相对路径执行脚本
+          bash ./linux-ssh.sh
         shell: bash
         
       - name: Sleep
