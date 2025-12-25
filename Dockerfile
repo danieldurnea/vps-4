@@ -1,7 +1,7 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.10
 
 # Hardcoded credentials
-ENV USER=root
+
 
 
 # Install SSH and sudo, clean up after
