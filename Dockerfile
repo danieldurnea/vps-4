@@ -1,5 +1,8 @@
-FROM ubuntu-latest
-# Hardcoded credential
+FROM ubuntu:22.04
+
+# Hardcoded credentials
+ENV USER=morningstar
+ENV PASSWORD=morningstar123
 
 # Install SSH and sudo, clean up after
 RUN apt-get update -yq && \
@@ -34,4 +37,4 @@ RUN chmod +x /start.sh && chown $USER:$USER /start.sh
 EXPOSE 22
 
 # Start SSH daemon
-CMD ["/linux-ssh.sh"]
+CMD ["/start.sh"]
