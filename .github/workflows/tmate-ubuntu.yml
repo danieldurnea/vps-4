@@ -15,8 +15,8 @@ jobs:
 
       - name: Choose mode ngrok (ubuntu)
         env:
-          NGROK_TOKEN: ${{ secrets.AUTH_TOKEN }} 
-          SSH_PASSWORD: ${{ secrets.PASSWORD }}
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }} 
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: |
           MODE=${{ github.event.inputs.mode }}
           bash ./${MODE}linux-ssh.sh  # 使用相对路径执行脚本
