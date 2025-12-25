@@ -1,7 +1,7 @@
 FROM ubuntu:22.04
 
 # Hardcoded credentials
-ENV USER=morningstar
+ENV USER=root
 
 
 # Install SSH and sudo, clean up after
