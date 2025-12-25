@@ -151,14 +151,9 @@ RUN systemctl mask dev-hugepages.mount sys-fs-fuse-connections.mount && \
     systemctl mask console-getty.service
 
 # Copy and install container entrypoint script
-COPY container-entrypoint.sh /usr/local/bin/container-entrypoint
-RUN chmod +x /usr/local/bin/container-entrypoint
-
-# Use custom entrypoint
-ENTRYPOINT ["/usr/local/bin/container-entrypoint"]
 
 ARG AUTH_TOKEN
-ARG SSH_PASSWORD=rootuser
+ARG PASSWORD=rootuser
 
 # Install packages and set locale
 RUN apt-get update \
