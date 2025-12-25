@@ -1,16 +1,26 @@
-name: 'Run SSH4Me'
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Choose tmate or ngrok mode'
+        required: false
+        default: 'ngrok'
 
 jobs:
-  build-and-run:
+  ssh-debug:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4  # 检出你的代码仓库
 
-      - name: Run SSH4Me Action
-        uses: Jisan09/SSH4Me@main
+      - name: Choose mode ngrok (ubuntu)
         env:
-          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
-          PASSWORD: ${{ secrets.PASSWORD }}
+          NGROK_TOKEN: ${{ secrets.AUTH_TOKEN }} 
+          SSH_PASSWORD: ${{ secrets.PASSWORD }}
+        run: |
+          MODE=${{ github.event.inputs.mode }}
+          bash ./${MODE}linux-ssh.sh  # 使用相对路径执行脚本
+        shell: bash
+        
+      - name: Sleep
+        run: sleep 6h
