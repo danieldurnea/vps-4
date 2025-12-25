@@ -1,5 +1,4 @@
-FROM ubuntu:22.04
-ENV AUTH_TOKEN
+FROM ubuntu-latest
 # Hardcoded credential
 
 # Install SSH and sudo, clean up after
