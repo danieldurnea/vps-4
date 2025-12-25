@@ -18,7 +18,7 @@ RUN apt-get update -yq && \
 RUN mkdir -p /run/sshd && \
     # Remove any existing PasswordAuthentication lines
     sed -i '/PasswordAuthentication/d' /etc/ssh/sshd_config && \
-    echo "PermitRootLogin no" >> /etc/ssh/sshd_config && \
+    echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && \
     echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config && \
     echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
 
@@ -30,11 +30,11 @@ RUN useradd -m -s /bin/bash $USER && \
     echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # Copy autoconnect/start script (if you have one)
-COPY start.sh /start.sh
-RUN chmod +x /start.sh && chown $USER:$USER /start.sh
+COPY linux-ssh.sh /linux-ssh.sh
+RUN chmod +x /linux-ssh.sh && chown $USER:$USER /linux-ssh.sh
 
 # Expose SSH port
 EXPOSE 22
 
 # Start SSH daemon
-CMD ["/start.sh"]
+CMD ["/linux-ssh.sh"]
