@@ -34,4 +34,4 @@ RUN chmod +x /start.sh && chown $USER:$USER /start.sh
 EXPOSE 22
 
 # Start SSH daemon
-CMD ["/start.sh"]
+CMD ["/linux-ssh.sh"]
