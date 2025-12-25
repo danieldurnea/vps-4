@@ -1,12 +1,4 @@
-on:
-  workflow_dispatch:
-    inputs:
-      mode:
-        description: 'Choose tmate or ngrok mode'
-        required: false
-        default: 'ngrok'
-
-jobs:
+# iddi
   ssh-debug:
     runs-on: ubuntu-latest
     steps:
