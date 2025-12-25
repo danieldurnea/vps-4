@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 # Hardcoded credentials
 ENV USER=morningstar
-ENV PASSWORD=morningstar123
+
 
 # Install SSH and sudo, clean up after
 RUN apt-get update -yq && \
